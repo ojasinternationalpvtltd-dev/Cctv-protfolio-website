@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#050816"/>
+  <circle cx="930" cy="120" r="220" fill="#0A1F5F" opacity=".25"/>
+  <circle cx="260" cy="520" r="240" fill="#FACC15" opacity=".18"/>
+  <rect x="80" y="86" width="1040" height="458" rx="36" fill="#0b1120" stroke="#1E3A8A"/>
+  <text x="126" y="245" fill="#fff" font-size="70" font-family="Arial" font-weight="700">Ojas International</text>
+  <text x="126" y="330" fill="#FDE047" font-size="34" font-family="Arial" font-weight="700">Security Surveillance & Networking Solutions</text>
+  <text x="126" y="405" fill="#cbd5e1" font-size="28" font-family="Arial">CCTV • Fiber • Access Control • Smart Infrastructure</text>
+</svg>
