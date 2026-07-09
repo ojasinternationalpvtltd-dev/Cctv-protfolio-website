@@ -11,7 +11,7 @@ export default function HomePage() {
   const heroVisuals = [
     { src: "/images/service-cctv.svg", title: "CCTV Surveillance", className: "lg:col-span-2" },
     { src: "/images/service-networking.svg", title: "Networking" },
-    { src: "/images/service-access.svg", title: "Access Control" },
+    { src: "/images/access-control.webp", title: "Access Control" },
     { src: "/images/service-fiber.svg", title: "Fiber Optic" }
   ];
 
