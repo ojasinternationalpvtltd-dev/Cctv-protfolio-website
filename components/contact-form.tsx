@@ -22,7 +22,7 @@ const schema = z.object({
 });
 
 type FormValues = z.infer<typeof schema>;
-const formSubmitEndpoint = "https://formsubmit.co/ajax/ojasinternationalpvtltd@gmail.com";
+const formSubmitEndpoint = "https://formsubmit.co/ojasinternationalpvtltd@gmail.com";
 
 export function ContactForm({ compact = false }: { compact?: boolean }) {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
@@ -36,6 +36,10 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
   useEffect(() => {
+    if (params.get("sent") === "1") {
+      setStatus("success");
+    }
+
     if (params.get("focus") === "consultation" && formRef.current) {
       formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
       formRef.current.classList.add("form-highlight");
@@ -46,35 +50,38 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
   async function onSubmit(values: FormValues) {
     setStatus("idle");
     const subject = `New site inspection request: ${values.requiredService}`;
-    const response = await fetch(formSubmitEndpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        _subject: subject,
-        _template: "table",
-        _captcha: "false",
-        name: values.fullName,
-        company: values.companyName || "N/A",
-        phone: values.phone,
-        email: values.email,
-        _replyto: values.email,
-        service: values.requiredService,
-        budget: values.budget || "N/A",
-        projectDetails: values.projectDetails,
-        message: values.message
-      })
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = formSubmitEndpoint;
+    form.style.display = "none";
+
+    const payload: Record<string, string> = {
+      _subject: subject,
+      _template: "table",
+      _captcha: "false",
+      _next: `${window.location.origin}/contact?sent=1`,
+      name: values.fullName,
+      company: values.companyName || "N/A",
+      phone: values.phone,
+      email: values.email,
+      _replyto: values.email,
+      service: values.requiredService,
+      budget: values.budget || "N/A",
+      projectDetails: values.projectDetails,
+      message: values.message
+    };
+
+    Object.entries(payload).forEach(([name, value]) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = name;
+      input.value = value;
+      form.appendChild(input);
     });
 
-    if (response.ok) {
-      setStatus("success");
-      reset();
-      return;
-    }
-
-    setStatus("error");
+    document.body.appendChild(form);
+    reset();
+    form.submit();
   }
 
   const fields = [
