@@ -22,6 +22,7 @@ const schema = z.object({
 });
 
 type FormValues = z.infer<typeof schema>;
+const formSubmitEndpoint = "https://formsubmit.co/ajax/contact@ojasintl.com.np";
 
 export function ContactForm({ compact = false }: { compact?: boolean }) {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
@@ -44,10 +45,27 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
 
   async function onSubmit(values: FormValues) {
     setStatus("idle");
-    const response = await fetch("/api/contact", {
+    const subject = `New site inspection request: ${values.requiredService}`;
+    const response = await fetch(formSubmitEndpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values)
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        _subject: subject,
+        _template: "table",
+        _captcha: "false",
+        name: values.fullName,
+        company: values.companyName || "N/A",
+        phone: values.phone,
+        email: values.email,
+        _replyto: values.email,
+        service: values.requiredService,
+        budget: values.budget || "N/A",
+        projectDetails: values.projectDetails,
+        message: values.message
+      })
     });
 
     if (response.ok) {
