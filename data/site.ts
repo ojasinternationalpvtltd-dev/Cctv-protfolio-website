@@ -23,7 +23,7 @@ export const company = {
   owner: "Kriti",
   phone: "+977 9801989840, +977 9801989841",
   primaryPhone: "+9779801989840",
-  email: "contact@ojasintl.com.np",
+  email: "ojasinternationalpvtltd@gmail.com",
   address: "Naya Thimi, Bhaktapur, Nepal",
   hours: "Sunday - Friday, 9:00 AM - 6:00 PM",
   whatsapp: "https://wa.me/9779801989840"

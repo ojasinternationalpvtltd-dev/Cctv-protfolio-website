@@ -22,7 +22,7 @@ const schema = z.object({
 });
 
 type FormValues = z.infer<typeof schema>;
-const formSubmitEndpoint = "https://formsubmit.co/ajax/contact@ojasintl.com.np";
+const formSubmitEndpoint = "https://formsubmit.co/ajax/ojasinternationalpvtltd@gmail.com";
 
 export function ContactForm({ compact = false }: { compact?: boolean }) {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");

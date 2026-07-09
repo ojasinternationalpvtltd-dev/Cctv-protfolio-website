@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { z } from "zod";
 
-const contactEmail = "contact@ojasintl.com.np";
+const contactEmail = "ojasinternationalpvtltd@gmail.com";
 
 const contactSchema = z.object({
   fullName: z.string().min(2),
