@@ -36,8 +36,23 @@ export default function ContactPage() {
           <a href={company.whatsapp} className="flex items-center justify-center gap-3 rounded-2xl border border-emerald-400/30 bg-emerald-400/10 p-5 font-semibold text-emerald-200">
             <MessageCircle className="h-5 w-5" /> Chat on WhatsApp
           </a>
-          <div className="glass flex min-h-64 items-center justify-center rounded-2xl p-6 text-center text-slate-400">
-            Google Maps location placeholder
+          <div className="glass overflow-hidden rounded-2xl">
+            <iframe
+              src="https://www.google.com/maps?q=OJAS+INTERNATIONAL+PVT.LTD,+Radhe+Radhe+Rd,+Bhaktapur+44800&output=embed"
+              title="Ojas International location"
+              className="w-full h-64 border-0"
+              loading="lazy"
+            />
+            <div className="p-4 text-center">
+              <a
+                href="https://www.google.com/maps/dir//OJAS+INTERNATIONAL+PVT.LTD,+Radhe+Radhe+Rd,+Bhaktapur+44800/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x39eb1b56723c4b01:0xf63292146f756ec6?sa=X&ved=1t:57443&ictx=111"
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold text-cyan hover:underline"
+              >
+                Open in Google Maps
+              </a>
+            </div>
           </div>
         </aside>
       </div>
