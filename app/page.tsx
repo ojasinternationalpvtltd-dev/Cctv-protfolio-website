@@ -8,13 +8,6 @@ import { ServiceCard } from "@/components/service-card";
 import { brands, industries, projects, services, stats, testimonials, whyChoose } from "@/data/site";
 
 export default function HomePage() {
-  const heroVisuals = [
-    { src: "/images/service-cctv.svg", title: "CCTV Surveillance", className: "lg:col-span-2" },
-    { src: "/images/service-networking.svg", title: "Networking" },
-    { src: "/images/access-control.webp", title: "Access Control" },
-    { src: "/images/service-fiber.svg", title: "Fiber Optic" }
-  ];
-
   return (
     <>
       <section className="relative overflow-hidden px-6 pt-32 md:pt-40">
@@ -48,18 +41,24 @@ export default function HomePage() {
           </div>
           <div className="relative min-h-[520px]">
             <div className="absolute inset-0 rounded-[2rem] border border-cyan/20 bg-radial-grid blur-2xl" />
-            <div className="relative grid h-full min-h-[520px] grid-cols-2 gap-4 rounded-[2rem] border border-yellow-400/20 bg-midnight/65 p-4 shadow-glow backdrop-blur">
-              {heroVisuals.map((item, index) => (
-                <div
-                  key={item.title}
-                  className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-ink/70 ${item.className ?? ""}`}
-                >
-                  <Image src={item.src} alt={item.title} fill priority={index === 0} className="object-cover transition duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/65 to-transparent p-4">
-                    <p className="font-display text-sm font-semibold text-yellow-200 md:text-lg">{item.title}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="relative h-full min-h-[520px] overflow-hidden rounded-[2rem] border border-yellow-400/20 bg-midnight/65 p-3 shadow-glow backdrop-blur">
+              <Image
+                src="/images/office-hero.jpg"
+                alt="Ojas International office and technology showroom"
+                fill
+                priority
+                sizes="(min-width: 1024px) 46vw, 100vw"
+                className="rounded-[1.5rem] object-cover"
+              />
+              <div className="absolute inset-3 rounded-[1.5rem] bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8">
+                <p className="max-w-md font-display text-2xl font-bold text-yellow-200 md:text-3xl">
+                  Smart Security & Networking Solutions
+                </p>
+                <p className="mt-3 max-w-md text-sm leading-6 text-slate-100">
+                  Visit-ready technology expertise for homes, offices and business spaces.
+                </p>
+              </div>
             </div>
           </div>
         </div>

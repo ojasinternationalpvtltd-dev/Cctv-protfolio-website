@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Facebook, Linkedin, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { Facebook, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { company, services } from "@/data/site";
 import { Button } from "@/components/ui/button";
 
@@ -8,11 +9,14 @@ export function Footer() {
     <footer className="border-t border-white/10 bg-midnight/70">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          <Link href="/" className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-electric to-cyan">
-              <ShieldCheck className="h-6 w-6 text-white" />
-            </span>
-            <span className="font-display text-lg font-bold text-white">{company.name}</span>
+          <Link href="/" className="flex items-center" aria-label="Ojas International home">
+            <Image
+              src="/images/ojas-international-logo-fixed.png"
+              alt="Ojas International"
+              width={320}
+              height={120}
+              className="h-auto w-56 object-contain"
+            />
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-6 text-slate-400">
             Premium security surveillance, networking, smart access and IT infrastructure solutions built for dependable performance.
